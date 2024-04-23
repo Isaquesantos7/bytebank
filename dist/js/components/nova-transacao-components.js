@@ -1,5 +1,6 @@
 import { Conta } from '../types/Conta.js';
 import { saldoComponent } from "./saldo-component.js";
+import { renderizarExtrato } from "./extrato-components.js";
 const elementoFormulario = document.querySelector(".block-nova-transacao form");
 elementoFormulario.addEventListener("submit", function (event) {
     try {
@@ -22,6 +23,7 @@ elementoFormulario.addEventListener("submit", function (event) {
         Conta.registrarTransacao(novaTransacao);
         saldoComponent.atualizar();
         elementoFormulario.reset();
+        renderizarExtrato();
     }
     catch (erro) {
         alert(erro.message);
